@@ -30,8 +30,14 @@
       <div id="stageWrap" class="stage-wrap empty">
         <div id="stage" class="stage"></div>
         <div class="stage-empty">링크를 붙여넣거나 파일을 열어주세요</div>
+        <div id="countBig" class="count-big" hidden></div>
       </div>
-      <div id="title" class="song-title"></div>
+      <div class="title-row">
+        <div id="title" class="song-title"></div>
+        <button id="star" class="btn icon" aria-label="곡 저장" aria-pressed="false" disabled>☆</button>
+        <button id="mirror" class="btn icon" aria-label="거울 모드" aria-pressed="false">⇋</button>
+        <button id="wake" class="btn icon" aria-label="화면 켜두기" aria-pressed="false" hidden>☀</button>
+      </div>
 
       <section class="seek">
         <div class="seek-track">
@@ -83,6 +89,46 @@
         </div>
         <div id="rates" class="chips"></div>
         <div id="rateNote" class="hint"></div>
+      </section>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab on" data-tab="sections" role="tab">구간</button>
+        <button class="tab" data-tab="count" role="tab">카운트</button>
+        <button class="tab" data-tab="library" role="tab">곡 목록</button>
+      </nav>
+
+      <section id="tab-sections" class="panel">
+        <div id="sectionList" class="list"></div>
+        <div class="hint">A·B를 찍은 뒤 이름을 눌러 구간 저장</div>
+        <div id="sectionNames" class="chips wrap"></div>
+      </section>
+
+      <section id="tab-count" class="panel" hidden>
+        <div class="bpm-row">
+          <button id="tap" class="btn big tap-btn">탭</button>
+          <div class="bpm-box">
+            <div id="bpm" class="bpm mono">--</div>
+            <div class="hint">BPM (원곡 기준)</div>
+          </div>
+          <div class="bpm-adj">
+            <button id="bpmUp" class="btn">+1</button>
+            <button id="bpmDown" class="btn">−1</button>
+          </div>
+        </div>
+        <div class="hint">박자에 맞춰 탭을 4번 이상. 느린 배속에서 탭해도 원곡 BPM으로 환산돼요.</div>
+        <button id="setOne" class="btn">지금 위치를 "1"로</button>
+        <div class="toggles">
+          <button id="showCount" class="btn" aria-pressed="false">8카운트 표시</button>
+          <button id="countIn" class="btn" aria-pressed="false">카운트인 5·6·7·8</button>
+        </div>
+      </section>
+
+      <section id="tab-library" class="panel" hidden>
+        <div class="seg">
+          <button class="btn small on" data-filter="recent">최근</button>
+          <button class="btn small" data-filter="saved">저장됨 ★</button>
+        </div>
+        <div id="songList" class="list"></div>
       </section>
     </main>
     <div id="toast" class="toast" hidden></div>
