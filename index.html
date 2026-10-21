@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0e0f13" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="댄스 리플레이" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <title>댄스 리플레이</title>
+  </head>
+  <body>
+    <main id="app">
+      <section class="load">
+        <input id="url" type="url" inputmode="url" autocomplete="off" placeholder="유튜브 링크 붙여넣기" />
+        <button id="paste" class="btn primary">붙여넣기</button>
+        <label class="btn" title="내 파일 열기">
+          파일
+          <input id="file" type="file" accept="audio/*,video/*" hidden />
+        </label>
+      </section>
+
+      <div id="notice" class="notice" hidden></div>
+
+      <div id="stageWrap" class="stage-wrap empty">
+        <div id="stage" class="stage"></div>
+        <div class="stage-empty">링크를 붙여넣거나 파일을 열어주세요</div>
+      </div>
+      <div id="title" class="song-title"></div>
+
+      <section class="seek">
+        <div class="seek-track">
+          <div id="abRange" class="ab-range" hidden></div>
+          <div id="progress" class="progress"></div>
+          <input id="seekbar" type="range" min="0" max="0" step="0.1" value="0" aria-label="재생 위치" />
+        </div>
+        <div class="times">
+          <span id="cur" class="mono">0:00.0</span>
+          <span id="count" class="count" hidden></span>
+          <span id="dur" class="mono">0:00</span>
+        </div>
+      </section>
+
+      <section class="transport">
+        <button class="btn big" data-act="back5" aria-label="5초 뒤로">−5s</button>
+        <button id="play" class="btn huge primary" aria-label="재생">▶</button>
+        <button class="btn big" data-act="fwd5" aria-label="5초 앞으로">+5s</button>
+      </section>
+
+      <section class="ab">
+        <div class="ab-col">
+          <button id="btnA" class="btn ab-btn">A</button>
+          <div id="timeA" class="mono ab-time">--:--</div>
+          <div class="nudge">
+            <button class="btn" data-nudge="a" data-d="-0.1">−0.1</button>
+            <button class="btn" data-nudge="a" data-d="0.1">+0.1</button>
+          </div>
+        </div>
+        <div class="ab-mid">
+          <button id="loop" class="btn loop-btn" aria-pressed="false">반복<br /><small>OFF</small></button>
+          <button id="clearAB" class="btn small">지우기</button>
+        </div>
+        <div class="ab-col">
+          <button id="btnB" class="btn ab-btn">B</button>
+          <div id="timeB" class="mono ab-time">--:--</div>
+          <div class="nudge">
+            <button class="btn" data-nudge="b" data-d="-0.1">−0.1</button>
+            <button class="btn" data-nudge="b" data-d="0.1">+0.1</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="speed">
+        <div class="speed-main">
+          <button id="rateDown" class="btn big" aria-label="0.05 느리게">−</button>
+          <button id="rateVal" class="rate-val mono" title="1.0x로 되돌리기">1.00x</button>
+          <button id="rateUp" class="btn big" aria-label="0.05 빠르게">+</button>
+        </div>
+        <div id="rates" class="chips"></div>
+        <div id="rateNote" class="hint"></div>
+      </section>
+    </main>
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
