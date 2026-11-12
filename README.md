@@ -18,9 +18,9 @@ npm run build    # dist/
 
 ## 배포 (GitHub Pages)
 
-1. 이 브랜치를 `main`에 머지
-2. GitHub 저장소 → Settings → Pages → Source: **GitHub Actions**
-3. `main`에 푸시되면 `.github/workflows/deploy.yml`이 테스트·빌드 후 `https://<user>.github.io/song/`에 배포
+배포 주소: **https://cjsdudwls1.github.io/song/**
+
+`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·빌드 후 자동 배포합니다(Pages Source: GitHub Actions, 설정 완료).
 
 `vite.config.ts`의 `base: './'` 덕분에 Vercel(루트 경로)에도 설정 없이 올라갑니다.
 
